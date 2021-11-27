@@ -6,11 +6,6 @@ $imgUri = "https://cf.shopee.co.id/file/";
 $shopId = "62582411";
 $itemId = [
     "SALL-MYBL-000001-001" => "1087842917",
-    "SALL-MYBL-000001-002" => "2043380342",
-    "SALL-MYBL-000001-003" => "1087842034",
-    "SALL-MYBL-000001-004" => "1326873960",
-    "SALL-MYBL-000002-001" => "1022698156",
-    "SALL-MYBL-000002-002" => "4919024970"
 ];
 
 // Excel Modules
@@ -41,10 +36,10 @@ foreach($itemId as $key=>$item) {
     $pathSave = './result/'.$key;
     $varian   = $data['tier_variations'][0]['options'];
 
-    // header('Content-Type: application/json');
-    // $json2 = json_encode($decode, JSON_PRETTY_PRINT);
-    // echo $json2;
-    // exit();
+    header('Content-Type: application/json');
+    $json2 = json_encode($decode, JSON_PRETTY_PRINT);
+    echo $json2;
+    exit();
 
     // Create Dir
     mkdir($pathSave, 0777, true);
@@ -58,7 +53,7 @@ foreach($itemId as $key=>$item) {
     }
 
     // IF there any variant
-    if (count($varian) > 0) {
+    if (count($varian) > 1) {
         for ($i=1;$i<=count($varian);$i++) {
             if ($i<10) {
                 $var_img_path = $pathSave.'/00'.$i;
@@ -74,7 +69,7 @@ foreach($itemId as $key=>$item) {
     }
 
     // Write Excel
-    if (count($varian) > 0) {
+    if (count($varian) > 1) {
         for ($i=1;$i<=count($varian);$i++) {
             if ($i<10) {
                 $sku_child = "00".$i;
