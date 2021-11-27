@@ -1,0 +1,77 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "50c069cb3be64d34e3e1e74c8517617c",
+    "packages": [
+        {
+            "name": "ellumilel/php-excel-writer",
+            "version": "v0.1.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ellumilel/php-excel-writer.git",
+                "reference": "1f0813bc1aa17af2d05db624a6f6c99a4ce3e054"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ellumilel/php-excel-writer/zipball/1f0813bc1aa17af2d05db624a6f6c99a4ce3e054",
+                "reference": "1f0813bc1aa17af2d05db624a6f6c99a4ce3e054",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.4|^7.0|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8|~5.7|~6.0|^9.4",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ellumilel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Denis Tikhonov",
+                    "email": "ozy@mailserver.ru",
+                    "homepage": "https://github.com/Ellumilel/php-excel-writer",
+                    "role": "Author"
+                }
+            ],
+            "description": "Big data Excel writer with small memory consuming",
+            "homepage": "https://github.com/Ellumilel/php-excel-writer",
+            "keywords": [
+                "big-data",
+                "excel",
+                "excel-downloader",
+                "excel-writer",
+                "export",
+                "php-excel",
+                "php-excel-writer",
+                "spreadsheet",
+                "xlsx"
+            ],
+            "support": {
+                "issues": "https://github.com/ellumilel/php-excel-writer/issues",
+                "source": "https://github.com/ellumilel/php-excel-writer/tree/v0.1.9"
+            },
+            "time": "2020-11-13T11:25:26+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}
