@@ -35,10 +35,10 @@ foreach($itemId as $key=>$item) {
     $pathSave = './result/'.$key;
     $varian   = $data['tier_variations'][0]['options'];
 
-    // header('Content-Type: application/json');
-    // $json2 = json_encode($decode, JSON_PRETTY_PRINT);
-    // echo $json2;
-    // exit();
+    header('Content-Type: application/json');
+    $json2 = json_encode($data, JSON_PRETTY_PRINT);
+    echo $json2;
+    exit();
 
     // Create Dir
     mkdir($pathSave, 0777, true);

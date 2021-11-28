@@ -13,6 +13,7 @@ https://shopee.co.id/-MK16-Mahkota-Tiara-Pengantin-Batu-Zircon-Kilap-Berlian-i.1
 https://shopee.co.id/Mocha-Sepatu-Pesta-Wanita-Tali-Sepatu-Stiletto-Heels-9cm-AVEDA-FA6171-i.173501527.8715803630?sp_atk=85c32766-5a52-4915-acf2-78bae6494551&xptdk=85c32766-5a52-4915-acf2-78bae6494551
 https://shopee.co.id/Ivory-White-Selop-Sandal-Sepatu-Pesta-Wanita-Block-Heels-5cm-AVEDA-HK6241-i.173501527.6941439891
         </textarea>
+        <br>
         <button type="submit">Test</button>
     </form>
 </body>
@@ -129,10 +130,8 @@ function extract_url($collect) {
     ob_end_flush();
 }
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $post_text = preg_split("/\r\n|\n|\r/", $_POST['urlx']);
+function extract_text($input) {
+    $post_text = preg_split("/\r\n|\n|\r/", $input);
 
     $arr = [];
     foreach($post_text as $str) {
@@ -149,10 +148,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             "link" => $str
         ];
     }
-    // echo "<pre>";
-    //     print_r($arr);
-    // echo "</pre>";
 
-    extract_url($arr);
+    return $arr;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    extract_url(extract_text(trim($_POST['urlx'])));
 
 }
