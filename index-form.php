@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h3>Format: SKU, Link <small>"Separated by break line"</small></h3>
     <form name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
         <textarea name="urlx" id="" cols="30" rows="10"></textarea>
         <br>
@@ -17,6 +18,8 @@
 </html>
 
 <?php
+
+set_time_limit(300);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -36,9 +39,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
+function rrmdir($dir) { 
+    if (is_dir($dir)) { 
+        $objects = scandir($dir);
+        foreach ($objects as $object) { 
+            if ($object != "." && $object != "..") { 
+                if (is_dir($dir. DIRECTORY_SEPARATOR .$object) && !is_link($dir."/".$object))
+                rrmdir($dir. DIRECTORY_SEPARATOR .$object);
+                else
+                unlink($dir. DIRECTORY_SEPARATOR .$object); 
+            } 
+        }
+        rmdir($dir); 
+    }
+}
+
 function extract_link($str) {
     $s_1 = str_replace("https://shopee.co.id/", "", $str);
-    $s_2 = substr($s_1, strpos($s_1, ".")+1);
+    $s_2 = substr($s_1, strpos($s_1, "i.")+2);
     $s_3 = substr($s_2, strpos($s_2, ".")+1);
 
     $shopId = strtok($s_2, '.');
@@ -50,6 +68,7 @@ function extract_link($str) {
         "link" => $str
     ];
 }
+
 function get_models_price($search, $data) {
     $models = $data['models'];
     $return = [];
@@ -65,9 +84,13 @@ function get_models_price($search, $data) {
     }
     return $return;
 }
+
 function execution($itemId) {
     $reqUri = "https://shopee.co.id/api/v4/";
     $imgUri = "https://cf.shopee.co.id/file/";
+
+    rrmdir("result");
+    mkdir("result");
 
     // Excel Modules
     require 'vendor/autoload.php';

@@ -1,5 +1,7 @@
 <?php
 
+set_time_limit(300);
+
 $reqUri = "https://shopee.co.id/api/v4/";
 $imgUri = "https://cf.shopee.co.id/file/";
 
@@ -7,6 +9,9 @@ $itemId = [
     "SALL-AVSK-000001" => "https://shopee.co.id/Loose-Pants-Trousers-Wanita-Celana-Anti-Kusut-Celana-Kulot-Wanita-Celana-Kantor-Formal-Casual-332-662-i.332848392.12220590846?sp_atk=606eeba5-91da-4003-b53b-78316f2ebbf6&xptdk=606eeba5-91da-4003-b53b-78316f2ebbf6",
     "SALL-AVSK-000002" => "https://shopee.co.id/RX-Fashion-Yuka-Slim-Cullote-Linen-Kulot-Highwaist-CELANA-KULOT-HAWAI-CELANA-DRILY-KULOT-DRILL-MISHA-MEISHA-KULOT-DRILL-MIRABELLA-PANT-AURELIA-KULOT-YUKA-PANTS-(-GRATIS-ONGKIR-)-GA-i.9069060.3994553284?sp_atk=2ef357ad-dcec-4130-b6c7-e2549efb2574&xptdk=2ef357ad-dcec-4130-b6c7-e2549efb2574",
 ];
+
+rrmdir("result");
+mkdir("result");
 
 // Excel Modules
 require 'vendor/autoload.php';
@@ -29,7 +34,7 @@ function extract_link($input) {
     $arr = [];
     foreach($post_text as $str) {
         $s_1 = str_replace("https://shopee.co.id/", "", $str);
-        $s_2 = substr($s_1, strpos($s_1, ".")+1);
+        $s_2 = substr($s_1, strpos($s_1, "i.")+2);
         $s_3 = substr($s_2, strpos($s_2, ".")+1);
 
         $shopId = strtok($s_2, '.');

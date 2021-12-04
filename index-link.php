@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h3>Link Only "Separated by break line"</h3>
     <form name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" >
         <textarea name="urlx" id="" cols="30" rows="10">
             https://shopee.co.id/-MK16-Mahkota-Tiara-Pengantin-Batu-Zircon-Kilap-Berlian-i.14320723.2043990684?sp_atk=a5f0c754-89a5-4545-9d64-85f7257d1c9d&xptdk=a5f0c754-89a5-4545-9d64-85f7257d1c9d
@@ -20,10 +21,15 @@
 
 <?php
 
+set_time_limit(300);
+
 function extract_url($collect) {
 
     $reqUri = "https://shopee.co.id/api/v4/";
     $imgUri = "https://cf.shopee.co.id/file/";
+
+    rrmdir("result");
+    mkdir("result");
 
     // Excel Modules
     require 'vendor/autoload.php';
@@ -96,7 +102,7 @@ function extract_url($collect) {
                 $get_models_price = get_models_price($varian[$i-1], $data);
                 $wExcel->writeSheetRow('Shopee', [
                     $sku,
-                    $sku_child,
+                    $sku.'-'.$sku_child,
                     $data['name'],
                     $varian[$i-1],
                     ($get_models_price['price_bf'] == 0) ? substr($data['price_before_discount'], 0, -5) : $get_models_price['price_bf'],
@@ -138,7 +144,7 @@ function extract_text($input) {
     $arr = [];
     foreach($post_text as $str) {
         $s_1 = str_replace("https://shopee.co.id/", "", $str);
-        $s_2 = substr($s_1, strpos($s_1, ".")+1);
+        $s_2 = substr($s_1, strpos($s_1, "i.")+2);
         $s_3 = substr($s_2, strpos($s_2, ".")+1);
 
         $shopId = strtok($s_2, '.');
