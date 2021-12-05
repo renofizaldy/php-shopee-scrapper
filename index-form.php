@@ -104,6 +104,7 @@ function execution($itemId) {
         "HARGA"       => "integer",
         "DISKON"      => "integer",
         "LINK"        => "string",
+        "SOLD"        => "integer",
         "DESKRIPSI"   => "string"
     ]);
 
@@ -112,6 +113,7 @@ function execution($itemId) {
         ob_start();
     }
 
+    $x = 0;
     foreach($itemId as $key=>$item) {
 
         $e_link   = extract_link($item);
@@ -178,6 +180,7 @@ function execution($itemId) {
                     ($get_models_price['price_bf'] == 0) ? substr($data['price_before_discount'], 0, -5) : $get_models_price['price_bf'],
                     $get_models_price['price'],
                     $e_link['link'],
+                    $data['historical_sold'],
                     $data['description']
                 ]);
             }
@@ -190,11 +193,13 @@ function execution($itemId) {
                 ($data['price_before_discount'] !== 0) ? substr($data['price_before_discount'], 0, -5) : substr($data['price'], 0, -5),
                 ($data['price_before_discount'] !== 0) ? substr($data['price'], 0, -5) : substr($data['price_before_discount'], 0, -5),
                 $e_link['link'],
+                $data['historical_sold'],
                 $data['description']
             ]);
         }
 
         echo "DONE!! {$key} - {$data['name']}<br>";
+        $x++;
         // Get Buffering Status
         ob_flush();
         flush();
@@ -204,6 +209,6 @@ function execution($itemId) {
     $wExcel->writeToFile("./result/result.xlsx");
 
     // Set to End Buffering Process
-    echo "<br><br><b>Download Complete!</b>";
+    echo "<br><br><b>{$x} Download Complete!</b>";
     ob_end_flush();
 }

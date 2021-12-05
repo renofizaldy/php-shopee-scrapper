@@ -6,8 +6,7 @@ $reqUri = "https://shopee.co.id/api/v4/";
 $imgUri = "https://cf.shopee.co.id/file/";
 
 $itemId = [
-    "SALL-AVSK-000001" => "https://shopee.co.id/Loose-Pants-Trousers-Wanita-Celana-Anti-Kusut-Celana-Kulot-Wanita-Celana-Kantor-Formal-Casual-332-662-i.332848392.12220590846?sp_atk=606eeba5-91da-4003-b53b-78316f2ebbf6&xptdk=606eeba5-91da-4003-b53b-78316f2ebbf6",
-    "SALL-AVSK-000002" => "https://shopee.co.id/RX-Fashion-Yuka-Slim-Cullote-Linen-Kulot-Highwaist-CELANA-KULOT-HAWAI-CELANA-DRILY-KULOT-DRILL-MISHA-MEISHA-KULOT-DRILL-MIRABELLA-PANT-AURELIA-KULOT-YUKA-PANTS-(-GRATIS-ONGKIR-)-GA-i.9069060.3994553284?sp_atk=2ef357ad-dcec-4130-b6c7-e2549efb2574&xptdk=2ef357ad-dcec-4130-b6c7-e2549efb2574",
+    "SALL-AVSK-000001" => "https://shopee.co.id/PIXY-Lip-Cream-15-Uptown-Peach-i.168693892.2900798500?sp_atk=683d8381-fcc6-480f-94a3-9b66af37c8d2"
 ];
 
 rrmdir("result");
@@ -28,6 +27,20 @@ $wExcel->writeSheetHeader('Shopee', [
     "DESKRIPSI"   => "string"
 ]);
 
+function rrmdir($dir) { 
+    if (is_dir($dir)) { 
+        $objects = scandir($dir);
+        foreach ($objects as $object) { 
+            if ($object != "." && $object != "..") { 
+                if (is_dir($dir. DIRECTORY_SEPARATOR .$object) && !is_link($dir."/".$object))
+                rrmdir($dir. DIRECTORY_SEPARATOR .$object);
+                else
+                unlink($dir. DIRECTORY_SEPARATOR .$object); 
+            } 
+        }
+        rmdir($dir); 
+    }
+}
 function extract_link($input) {
     $post_text = preg_split("/\r\n|\n|\r/", $input);
 
@@ -82,11 +95,10 @@ foreach($itemId as $key=>$item) {
     // $json2 = json_encode($data, JSON_PRETTY_PRINT);
     // echo $json2;
 
-    // echo "<pre>";
-    // print_r($data['models']);
-    // echo "</pre>";
-    // echo get_models_price('4 gold', $data);
-    // exit();
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+    exit();
 
     // Create Dir
     mkdir($pathSave, 0777, true);
