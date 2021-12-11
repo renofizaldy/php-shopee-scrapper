@@ -23,6 +23,54 @@
 
 set_time_limit(300);
 
+function zipping($path, $filename) {
+    // Get real path for our folder
+    $rootPath = realpath($path);
+
+    // Initialize archive object
+    $zip = new ZipArchive();
+    $zip->open($path.'/'.$filename.".zip", ZipArchive::CREATE | ZipArchive::OVERWRITE);
+
+    // Create recursive directory iterator
+    /** @var SplFileInfo[] $files */
+    $files = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($rootPath),
+        RecursiveIteratorIterator::LEAVES_ONLY
+    );
+
+    foreach ($files as $name => $file)
+    {
+        // Skip directories (they would be added automatically)
+        if (!$file->isDir())
+        {
+            // Get real and relative path for current file
+            $filePath = $file->getRealPath();
+            $relativePath = substr($filePath, strlen($rootPath) + 1);
+
+            // Add current file to archive
+            $zip->addFile($filePath, $relativePath);
+        }
+    }
+
+    // Zip archive will be created only after closing object
+    $zip->close();
+}
+
+function rrmdir($dir) { 
+    if (is_dir($dir)) { 
+        $objects = scandir($dir);
+        foreach ($objects as $object) { 
+            if ($object != "." && $object != "..") { 
+                if (is_dir($dir. DIRECTORY_SEPARATOR .$object) && !is_link($dir."/".$object))
+                rrmdir($dir. DIRECTORY_SEPARATOR .$object);
+                else
+                unlink($dir. DIRECTORY_SEPARATOR .$object); 
+            } 
+        }
+        rmdir($dir); 
+    }
+}
+
 function extract_url($collect) {
 
     $reqUri = "https://shopee.co.id/api/v4/";
@@ -136,6 +184,9 @@ function extract_url($collect) {
     // Set to End Buffering Process
     echo "\n\nDownload Complete!";
     ob_end_flush();
+
+    zipping("result", "hasil");
+    echo "<script>window.location='result/hasil.zip'</script>";
 }
 
 function extract_text($input) {

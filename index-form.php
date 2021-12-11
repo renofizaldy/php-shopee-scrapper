@@ -39,6 +39,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
+function zipping($path, $filename) {
+    // Get real path for our folder
+    $rootPath = realpath($path);
+
+    // Initialize archive object
+    $zip = new ZipArchive();
+    $zip->open($path.'/'.$filename.".zip", ZipArchive::CREATE | ZipArchive::OVERWRITE);
+
+    // Create recursive directory iterator
+    /** @var SplFileInfo[] $files */
+    $files = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($rootPath),
+        RecursiveIteratorIterator::LEAVES_ONLY
+    );
+
+    foreach ($files as $name => $file)
+    {
+        // Skip directories (they would be added automatically)
+        if (!$file->isDir())
+        {
+            // Get real and relative path for current file
+            $filePath = $file->getRealPath();
+            $relativePath = substr($filePath, strlen($rootPath) + 1);
+
+            // Add current file to archive
+            $zip->addFile($filePath, $relativePath);
+        }
+    }
+
+    // Zip archive will be created only after closing object
+    $zip->close();
+}
+
 function rrmdir($dir) { 
     if (is_dir($dir)) { 
         $objects = scandir($dir);
@@ -211,4 +244,7 @@ function execution($itemId) {
     // Set to End Buffering Process
     echo "<br><br><b>{$x} Download Complete!</b>";
     ob_end_flush();
+
+    zipping("result", "hasil");
+    echo "<script>window.location='result/hasil.zip'</script>";
 }
