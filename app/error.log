@@ -1,0 +1,25 @@
+[Fri Oct 21 06:48:32.340368 2022] [autoindex:error] [pid 18] [client 172.18.0.1:33204] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Fri Oct 21 06:48:45.221673 2022] [php7:error] [pid 19] [client 172.18.0.1:33208] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:48:48.768748 2022] [php7:error] [pid 20] [client 172.18.0.1:33212] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:49:30.602527 2022] [php7:error] [pid 21] [client 172.18.0.1:33216] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:49:31.898361 2022] [php7:error] [pid 21] [client 172.18.0.1:33216] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:49:32.090371 2022] [php7:error] [pid 21] [client 172.18.0.1:33216] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:49:32.314926 2022] [php7:error] [pid 21] [client 172.18.0.1:33216] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:49:32.521369 2022] [php7:error] [pid 21] [client 172.18.0.1:33216] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:49:44.131257 2022] [php7:error] [pid 17] [client 172.18.0.1:33220] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:49:47.027581 2022] [php7:error] [pid 22] [client 172.18.0.1:33224] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:49:49.348194 2022] [php7:error] [pid 22] [client 172.18.0.1:33224] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:49:50.468162 2022] [autoindex:error] [pid 22] [client 172.18.0.1:33224] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
+[Fri Oct 21 06:49:52.194437 2022] [php7:error] [pid 22] [client 172.18.0.1:33224] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:50:45.220354 2022] [php7:error] [pid 18] [client 172.18.0.1:33228] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:50:45.959444 2022] [php7:error] [pid 19] [client 172.18.0.1:33232] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:50:46.675463 2022] [php7:error] [pid 19] [client 172.18.0.1:33232] script '/var/www/html/index-link.php' not found or unable to stat
+[Fri Oct 21 06:51:33.485605 2022] [php7:error] [pid 20] [client 172.18.0.1:33236] script '/var/www/html/index-form.php' not found or unable to stat
+[Fri Oct 21 06:53:12.318425 2022] [php7:error] [pid 17] [client 172.19.0.1:33242] script '/var/www/html/index-form.php' not found or unable to stat
+[Fri Oct 21 06:55:01.818966 2022] [php7:error] [pid 18] [client 172.19.0.1:33246] script '/var/www/html/index-form.php' not found or unable to stat
+[Fri Oct 21 06:55:03.362255 2022] [php7:error] [pid 18] [client 172.19.0.1:33246] script '/var/www/html/index-form.php' not found or unable to stat
+[Fri Oct 21 06:55:03.574351 2022] [php7:error] [pid 18] [client 172.19.0.1:33246] script '/var/www/html/index-form.php' not found or unable to stat
+[Fri Oct 21 06:55:03.767126 2022] [php7:error] [pid 18] [client 172.19.0.1:33246] script '/var/www/html/index-form.php' not found or unable to stat
+[Fri Oct 21 06:55:03.971319 2022] [php7:error] [pid 18] [client 172.19.0.1:33246] script '/var/www/html/index-form.php' not found or unable to stat
+[Fri Oct 21 06:55:04.203203 2022] [php7:error] [pid 18] [client 172.19.0.1:33246] script '/var/www/html/index-form.php' not found or unable to stat
+[Fri Oct 21 06:55:06.330798 2022] [autoindex:error] [pid 19] [client 172.19.0.1:33250] AH01276: Cannot serve directory /var/www/html/: No matching DirectoryIndex (index.php,index.html) found, and server-generated directory index forbidden by Options directive
