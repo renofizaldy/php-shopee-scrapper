@@ -2,7 +2,7 @@ name: Trigger Property in Radius
 
 on:
   schedule:
-    # Runs "every 5 minute" (see https://crontab.guru)
+    # (see https://crontab.guru)
     - cron: '0 19 * * *'
 jobs:
   build:
