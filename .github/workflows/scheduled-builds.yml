@@ -1,10 +1,9 @@
 name: Trigger Property in Radius
 
 on:
-  push:
   schedule:
     # (see https://crontab.guru)
-    - cron: '*/5 * * * *'
+    - cron: '0 */24 * * *'
 jobs:
   build:
     name: Trigger Cron Job
@@ -12,4 +11,4 @@ jobs:
     steps:
       - name: cURL request
         # Hit the webhook endpoint to rebuild  from the "main" branch
-        run: curl -X POST -d {} https://fb8f-2001-448a-50e0-a613-dd91-e974-912-da89.ap.ngrok.io/jituproperty/jitu-api/Job/propertyInRadius_Daily
+        run: curl -X POST -d {} https://jituproperty.com/api/Job/propertyInRadius_Daily
