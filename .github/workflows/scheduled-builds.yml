@@ -3,7 +3,7 @@ name: Trigger Property in Radius
 on:
   schedule:
     # (see https://crontab.guru)
-    - cron: '1 * * * *'
+    - cron: '*/5 * * * *'
 jobs:
   build:
     name: Trigger Cron Job
