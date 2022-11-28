@@ -1,6 +1,7 @@
 name: Trigger Estates Close
 
 on:
+  push:
   schedule:
     # Runs "every 5 minute" (see https://crontab.guru)
     - cron: '5 * * * *'
