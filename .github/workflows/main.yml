@@ -11,4 +11,4 @@ jobs:
     steps:
       - name: cURL request
         # Hit the webhook endpoint to rebuild  from the "main" branch
-        run: curl -X GET -d {} https://fb8f-2001-448a-50e0-a613-dd91-e974-912-da89.ap.ngrok.io/jituproperty/jitu-api/Job/getPen
+        run: curl -X POST -d {} https://fb8f-2001-448a-50e0-a613-dd91-e974-912-da89.ap.ngrok.io/jituproperty/jitu-api/Job/getPen
